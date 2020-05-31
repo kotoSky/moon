@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--模型版本。maven2.0必须是这样写，现在是maven2唯一支持的版本-->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--项目组织的唯一标识符 ：对应JAVA的包的结构，是main目录里java的目录结构-->
+    <groupId>cn.moon</groupId>
+    <!--项目的唯一标志：项目名-->
+    <artifactId>moon</artifactId>
+    <!--打包的机制  默认为jar-->
+    <packaging>pom</packaging>
+    <!--项目的版本号（简明）-->
+    <version>1.0-SNAPSHOT</version>
+    <!--项目名称-->
+    <name>moon</name>
+    <!--项目描述-->
+    <description>Demo project for Spring Boot</description>
+
+    <!--继承的项目-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.7.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!--子模块-->
+    <modules>
+        <module>base</module>
+        <module>service</module>
+    </modules>
+
+    <properties>
+        <!-- 编码格式 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- jdk版本 -->
+        <java.version>1.8</java.version>
+    </properties>
+
+</project>

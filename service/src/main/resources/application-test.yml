@@ -1,0 +1,9 @@
+server:
+  port: 8081
+
+spring:
+  # 开启日志
+  logging:
+    level:
+      org.springframework.web: DEBUG,CONSOLE
+    config: classpath:logback.xml
