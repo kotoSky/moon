@@ -31,7 +31,17 @@
     <modules>
         <module>base</module>
         <module>service</module>
+        <module>user</module>
     </modules>
+
+    <dependencies>
+        <!-- lombok插件依赖 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 
     <properties>
         <!-- 编码格式 -->

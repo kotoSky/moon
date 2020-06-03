@@ -1,7 +1,6 @@
-package cn.moon.controller;
+package cn.moon.service.controller;
 
 import cn.base.vo.Result;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     @GetMapping(path = "/")
-    public Result index(){
+    public Result index() {
 
         System.out.printf("hello");
 
