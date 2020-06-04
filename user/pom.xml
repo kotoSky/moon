@@ -12,7 +12,7 @@
     <artifactId>moon-user</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>dao</module>
+        <module>mapper</module>
         <module>controller</module>
     </modules>
 

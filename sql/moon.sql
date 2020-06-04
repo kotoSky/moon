@@ -12,4 +12,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('admin', '123');
+INSERT INTO `user` VALUES (null,'admin', '123');

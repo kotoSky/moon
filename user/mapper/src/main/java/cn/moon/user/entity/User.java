@@ -9,14 +9,14 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 @Data
-@TableName("t_user")
+@TableName("user")
 public class User {
 
     @NotNull(message = "ID不能为空")
     @TableId(value = "id", type = IdType.AUTO)
     int id;
 
-    @TableField(value = "userName")
+    @TableField(value = "username")
     String username;
 
     @TableField(value = "password")
