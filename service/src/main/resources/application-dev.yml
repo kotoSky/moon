@@ -11,5 +11,6 @@ spring:
   # 开启日志
   logging:
     level:
+      com.baidu.mybatisplus.mapper: debug
       org.springframework.web: DEBUG,CONSOLE
     config: classpath:logback.xml
