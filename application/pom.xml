@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>moon-service</artifactId>
+    <artifactId>moon-application</artifactId>
 
     <dependencies>
         <!--测试-->

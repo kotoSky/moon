@@ -1,4 +1,4 @@
-package cn.moon.service.controller;
+package cn.moon.index.controller;
 
 import cn.base.vo.Result;
 import org.springframework.web.bind.annotation.GetMapping;
