@@ -1,6 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
 
 // 设置反向代理，前端请求默认发送到 http://localhost:8443/api
 var axios = require('axios')
@@ -11,6 +15,9 @@ Vue.prototype.$axios = axios
 Vue.config.productionTip = false;
 
 new Vue({
+  el: '#app',
   router,
-  render: h => h(App)
+  render: h => h(App),
+  components: { App },
+  template: '<App/>'
 }).$mount("#app");
