@@ -14,6 +14,7 @@
     <modules>
         <module>mapper</module>
         <module>controller</module>
+        <module>service</module>
     </modules>
 
     <dependencies>
