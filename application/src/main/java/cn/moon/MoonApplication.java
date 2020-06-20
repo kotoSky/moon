@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author kell
  * @date 2020-05-31 11:34
  */
-@ComponentScan(basePackages = {"cn.moon.*.controller","cn.moon.*.service", "cn.moon.*.mapper"})
+@ComponentScan(basePackages = {"cn.moon.*"})
 @MapperScan("cn.moon.*.mapper")
 @EnableAutoConfiguration
 public class MoonApplication {

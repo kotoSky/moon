@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
-import java.util.Objects;
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class UserController {
@@ -18,20 +18,23 @@ public class UserController {
 
     @CrossOrigin
     @PostMapping(value = "api/login")
-    public Result login(@RequestBody User requestUser) {
+    public Result login(@RequestBody User requestUser, HttpSession session) {
         // 对 html 标签进行转义，防止 XSS 攻击
         String username = requestUser.getUsername();
         username = HtmlUtils.htmlEscape(username);
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.ge("username", username);
+        queryWrapper.ge("password", requestUser.getPassword());
         User user = userMapper.selectOne(queryWrapper);
 
-        if (Objects.equals(user.getUsername(), username) && Objects.equals(user.getPassword(), requestUser.getPassword())) {
-            String message = "账号密码错误";
-            return Result.error().msg(message);
-        } else {
+        if (user != null) {
+            session.setAttribute("user", user);
             return Result.success();
+        } else {
+            String message = "账号密码错误";
+            session.removeAttribute("user");
+            return Result.error().msg(message);
         }
     }
 

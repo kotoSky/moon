@@ -2,6 +2,12 @@ spring:
   profiles:
     active: dev
 
+  #静态文件必需配
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/static/
+
 
 mybatis-plus:
   # classpath* 加*可以扫描子模块的mapper
