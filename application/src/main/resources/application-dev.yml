@@ -14,3 +14,4 @@ spring:
       com.baidu.mybatisplus.mapper: debug
       org.springframework.web: DEBUG,CONSOLE
     config: classpath:logback.xml
+    path: /home/docker/java/logs/

@@ -167,7 +167,7 @@
 
     <!-- 4. 最终的策略 -->
     <!-- 4.1 开发环境:打印控制台-->
-    <springProfile name="dev">
+    <!--<springProfile name="dev">
         <logger name="cn.moon" level="info"/>
         <root level="info">
             <appender-ref ref="CONSOLE" />
@@ -176,7 +176,7 @@
             <appender-ref ref="WARN_FILE" />
             <appender-ref ref="ERROR_FILE" />
         </root>
-    </springProfile>
+    </springProfile>-->
 
 
     <!-- 4.2 生产环境:输出到文档-->

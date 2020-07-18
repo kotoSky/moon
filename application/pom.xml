@@ -31,6 +31,13 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <docker.repostory>10.200.4.7:2375</docker.repostory>
+    </properties>
+
     <build>
         <plugins>
             <!--如果我们要直接 Main 启动 spring，那么该插件无须要添加。
@@ -39,6 +46,41 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.13</version>
+                <executions>
+                    <!--可以在execution中同时指定build和push目标。当运行mvn package时，会自动执行build目标，构建Docker镜像。当运行mvn deploy命令时，会自动执行push目标，将Docker镜像push到Docker仓库。-->
+                    <execution>
+                        <id>default</id>
+                        <!--<goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>-->
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--镜像名称 repository指定docker镜像的repo名字。-->
+                    <repository>${docker.repostory}/${project.artifactId}</repository>
+                    <!--tag指定docker镜像的tag。-->
+                    <tag>${project.version}</tag>
+                    <!--buildArgs可以指定一个或多个变量，传递给Dockerfile，在Dockerfile中通过ARG指令进行引用。-->
+                    <buildArgs>
+                        <JAR_FILE>target/${project.name}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
