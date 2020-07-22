@@ -60,7 +60,8 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.4.13</version>
                 <executions>
-                    <!--可以在execution中同时指定build和push目标。当运行mvn package时，会自动执行build目标，构建Docker镜像。当运行mvn deploy命令时，会自动执行push目标，将Docker镜像push到Docker仓库。-->
+                    <!--可以在execution中同时指定build和push目标。当运行mvn package时，会自动执行build目标，
+                    构建Docker镜像。当运行mvn deploy命令时，会自动执行push目标，将Docker镜像push到Docker仓库。-->
                     <execution>
                         <id>default</id>
                         <!--<goals>

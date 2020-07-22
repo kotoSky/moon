@@ -11,7 +11,7 @@ ADD ${JAR_FILE} app.jar
 
 # -Djava.security.egd=file:/dev/./urandom 可解决tomcat可能启动慢的问题
 # 具体可查看：https://www.cnblogs.com/mightyvincent/p/7685310.html
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
+ENTRYPOINT ["nohup","java","-jar","app.jar","&"]
 
 # 对外端口
 EXPOSE 8081

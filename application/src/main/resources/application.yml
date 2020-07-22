@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: test
 
   #静态文件必需配
   mvc:
