@@ -35,7 +35,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <docker.repostory>10.200.4.7:2375</docker.repostory>
+        <docker.repostory>192.168.1.7:2375</docker.repostory>
     </properties>
 
     <build>
@@ -74,7 +74,7 @@
                     <!--镜像名称 repository指定docker镜像的repo名字。-->
                     <repository>${docker.repostory}/${project.artifactId}</repository>
                     <!--tag指定docker镜像的tag。-->
-                    <tag>${project.version}</tag>
+                    <tag>latest</tag>
                     <!--buildArgs可以指定一个或多个变量，传递给Dockerfile，在Dockerfile中通过ARG指令进行引用。-->
                     <buildArgs>
                         <JAR_FILE>target/${project.name}.jar</JAR_FILE>
