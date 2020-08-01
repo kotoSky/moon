@@ -6,11 +6,7 @@ spring:
     url: jdbc:mysql://10.200.9.7:3306/moon?characterEncoding=UTF-8&serverTimezone=GMT%2b8
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-# 开启日志
+# 自定义日志目录
 logging:
-  config: classpath:logback-spring.xml
   file:
     path: ./application/logs
-  level:
-    com.baidu.mybatisplus.mapper: debug
-    org.springframework.web:  debug

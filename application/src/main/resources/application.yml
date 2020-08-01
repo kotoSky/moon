@@ -6,7 +6,7 @@ server:
 spring:
   # 多环境配置切换
   profiles:
-    active: dev
+    active: prod
 
   #静态文件必需配
   mvc:
@@ -20,3 +20,10 @@ mybatis-plus:
   mapper-locations: classpath*:/mapper/*.xml
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: cn.moon.*.entity
+
+# 开启日志
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    com.baidu.mybatisplus.mapper: debug
+    org.springframework.web:  debug
