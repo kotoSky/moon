@@ -1,6 +1,12 @@
+server:
+  servlet:
+    context-path: /moon
+  port: 8081
+
 spring:
+  # 多环境配置切换
   profiles:
-    active: test
+    active: dev
 
   #静态文件必需配
   mvc:

@@ -14,6 +14,7 @@ public class IndexController {
     @GetMapping(path = "/")
     public Result index() {
 
+        int x = 10 / 0;
         System.out.printf("hello");
 
         return Result.success().data("你好！");

@@ -1,18 +1,16 @@
-server:
-  port: 8081
-
 spring:
   # 配置数据库
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://192.168.1.7:3306/moon?characterEncoding=UTF-8&serverTimezone=GMT%2b8
+    url: jdbc:mysql://10.200.9.7:3306/moon?characterEncoding=UTF-8&serverTimezone=GMT%2b8
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-  # 开启日志
-  logging:
-    level:
-      com.baidu.mybatisplus.mapper: debug
-      org.springframework.web: DEBUG,CONSOLE
-    config: classpath:logback.xml
-    path: /home/developer/app/logs/
+# 开启日志
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    com.baidu.mybatisplus.mapper: debug
+    org.springframework.web:  debug
+  file:
+    path: ./application/logs
