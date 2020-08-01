@@ -9,4 +9,4 @@ spring:
 # 自定义日志目录
 logging:
   file:
-    path: /docker/service/moon/logs
+    path: /opt/application/logs
