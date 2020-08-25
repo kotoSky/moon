@@ -1,4 +1,4 @@
-package cn.moon.user.controller;
+package cn.moon.controller.user;
 
 import cn.base.vo.Result;
 import cn.moon.user.entity.User;
@@ -30,7 +30,7 @@ public class UserController {
 
         if (user != null) {
             session.setAttribute("user", user);
-            return Result.success();
+            return Result.success("请求成功！");
         } else {
             String message = "账号密码错误";
             session.removeAttribute("user");

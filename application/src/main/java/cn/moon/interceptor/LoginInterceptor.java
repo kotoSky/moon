@@ -1,4 +1,4 @@
-package cn.moon.user.interceptor;
+package cn.moon.interceptor;
 
 import cn.moon.user.entity.User;
 import org.springframework.stereotype.Component;

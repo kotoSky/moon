@@ -30,11 +30,26 @@ public class Result {
         return result;
     }
 
+    public static Result success(String msg) {
+        Result result = new Result();
+        result.setCode(ResultCode.SUCCESS.getCode());
+        result.setMsg(msg);
+        return result;
+    }
+
     public static Result error() {
         Result result = new Result();
         result.setSuccess(Boolean.FALSE);
         result.setCode(ResultCode.ERROR.getCode());
         result.setMsg(ResultCode.ERROR.getMsg());
+        return result;
+    }
+
+    public static Result error(String msg) {
+        Result result = new Result();
+        result.setSuccess(Boolean.FALSE);
+        result.setCode(ResultCode.ERROR.getCode());
+        result.setMsg(msg);
         return result;
     }
 

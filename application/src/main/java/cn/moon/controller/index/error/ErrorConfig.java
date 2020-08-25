@@ -1,4 +1,4 @@
-package cn.moon.index.error;
+package cn.moon.controller.index.error;
 
 
 import org.springframework.boot.web.server.ErrorPage;
