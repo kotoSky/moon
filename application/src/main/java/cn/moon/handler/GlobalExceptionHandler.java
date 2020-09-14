@@ -1,4 +1,4 @@
-package cn.base.handler;
+package cn.moon.handler;
 
 import cn.base.enums.ResultCode;
 import cn.base.exception.CustomException;

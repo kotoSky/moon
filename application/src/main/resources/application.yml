@@ -6,14 +6,20 @@ server:
 spring:
   # 多环境配置切换
   profiles:
-    active: prod
+    active: dev
 
   #静态文件必需配
   mvc:
     static-path-pattern: /**
   resources:
-    static-locations: classpath:/static/
+    static-locations: classpath:templates/,classpath:/static/,file:static/
 
+  # 模板引擎
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # 禁用缓存
+    cache: false
 
 mybatis-plus:
   # classpath* 加*可以扫描子模块的mapper
