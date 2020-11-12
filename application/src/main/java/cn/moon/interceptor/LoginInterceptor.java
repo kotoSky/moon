@@ -1,6 +1,6 @@
 package cn.moon.interceptor;
 
-import cn.moon.user.entity.User;
+import cn.moon.system.entity.SysUser;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -29,7 +29,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String page = uri;
 
         if (begingWith(page, requireAuthPages)) {
-            User user = (User) session.getAttribute("user");
+            SysUser user = (SysUser) session.getAttribute("user");
             if (user == null) {
                 response.sendRedirect("login");
                 return false;
