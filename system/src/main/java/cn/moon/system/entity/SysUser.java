@@ -1,4 +1,4 @@
-package cn.moon.user.entity;
+package cn.moon.system.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @TableName("user")
-public class User {
+public class SysUser {
 
     @NotNull(message = "ID不能为空")
     @TableId(value = "id", type = IdType.AUTO)

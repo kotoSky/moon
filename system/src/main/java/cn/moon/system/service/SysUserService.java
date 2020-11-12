@@ -1,21 +1,21 @@
-package cn.moon.user.service;
+package cn.moon.system.service;
 
-import cn.moon.user.entity.User;
-import cn.moon.user.mapper.UserMapper;
+import cn.moon.system.entity.SysUser;
+import cn.moon.system.mapper.SysUserMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class SysUserService {
 
     @Autowired
-    private UserMapper userMapper;
+    private SysUserMapper userMapper;
 
     public boolean isExist(String username) {
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.ge("username", username);
-        User user = userMapper.selectOne(queryWrapper);
+        SysUser user = userMapper.selectOne(queryWrapper);
         return null != user;
     }
 

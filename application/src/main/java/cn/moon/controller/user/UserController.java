@@ -1,8 +1,8 @@
 package cn.moon.controller.user;
 
 import cn.base.vo.Result;
-import cn.moon.user.entity.User;
-import cn.moon.user.mapper.UserMapper;
+import cn.moon.system.entity.SysUser;
+import cn.moon.system.mapper.SysUserMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +14,19 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     @Autowired
-    private UserMapper userMapper;
+    private SysUserMapper userMapper;
 
     @CrossOrigin
     @PostMapping(value = "api/login")
-    public Result login(@RequestBody User requestUser, HttpSession session) {
+    public Result login(@RequestBody SysUser requestUser, HttpSession session) {
         // 对 html 标签进行转义，防止 XSS 攻击
         String username = requestUser.getUsername();
         username = HtmlUtils.htmlEscape(username);
 
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.ge("username", username);
         queryWrapper.ge("password", requestUser.getPassword());
-        User user = userMapper.selectOne(queryWrapper);
+        SysUser user = userMapper.selectOne(queryWrapper);
 
         if (user != null) {
             session.setAttribute("user", user);

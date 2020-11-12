@@ -31,7 +31,6 @@
     <modules>
         <module>base</module>
         <module>application</module>
-        <module>user</module>
         <module>system</module>
     </modules>
 

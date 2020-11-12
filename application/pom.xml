@@ -42,7 +42,7 @@
 
         <dependency>
             <groupId>cn.moon</groupId>
-            <artifactId>user-service</artifactId>
+            <artifactId>moon-system</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
