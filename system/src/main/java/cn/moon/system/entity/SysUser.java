@@ -9,7 +9,7 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 @Data
-@TableName("user")
+@TableName("sys_user")
 public class SysUser {
 
     @NotNull(message = "ID不能为空")
