@@ -32,6 +32,7 @@
         <module>base</module>
         <module>application</module>
         <module>system</module>
+        <module>service</module>
     </modules>
 
     <dependencies>
