@@ -26,6 +26,13 @@ public class BookService {
         return bookMapper.selectList(queryWrapper);
     }
 
+    public List<Book> search(String keywords) {
+        QueryWrapper<Book> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("title", keywords).or().like("author", keywords);
+        return bookMapper.selectList(queryWrapper);
+    }
+
+
     public void addOrUpdate(Book book) {
         bookMapper.insert(book);
     }

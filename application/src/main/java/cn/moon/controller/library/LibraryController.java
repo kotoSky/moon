@@ -3,6 +3,7 @@ package cn.moon.controller.library;
 
 import cn.moon.service.entity.Book;
 import cn.moon.service.service.BookService;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,17 @@ public class LibraryController {
         return bookService.list();
     }
 
+    @CrossOrigin
+    @GetMapping("/api/search")
+    public List<Book> searchResult(@RequestParam("keywords") String keywords) {
+        // 关键词为空时查询出所有书籍
+        if (StringUtils.isBlank(keywords)) {
+            return bookService.list();
+        } else {
+            return bookService.search(keywords);
+        }
+    }
+    
     @PostMapping("/api/save")
     public Book addOrUpdate(@RequestBody Book book) throws Exception {
         bookService.addOrUpdate(book);
