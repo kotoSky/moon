@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <el-form class="login_container"
-             ref="loginFromRef"
+             ref="loginFormRef"
              :model="loginForm"
              :rules="loginFormRules"
     >
       <h3 class="login_title">系统登录</h3>
-      <el-form-item>
+      <el-form-item prop="username">
         <el-input type="text" v-model="loginForm.username"
                   auto-complete="off" placeholder="账号"></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="password">
         <el-input type="password" v-model="loginForm.password"
                   auto-complete="off" placeholder="密码"></el-input>
       </el-form-item>
@@ -27,19 +27,24 @@
 import {reactive, ref, unref} from 'vue'
 import {useRouter} from 'vue-router'
 
-// 对密码和邮箱进行类型限制
-interface loginData {
-  username: string;
-  password: string;
+const router = useRouter()
+
+interface FormModule {
+  username: string,
+  password: string
 }
 
-const loginForm = ref<loginData>({
+interface RulesModule {
+  username: any[],
+  password: any[]
+}
+
+const loginForm = ref<FormModule>({
   username: '',
   password: ''
 })
 
-const router = useRouter()
-const loginFromRef = ref();
+const loginFormRef = ref();
 
 // 自定义验证规则
 const validatePass = (rule, value, callback) => {
@@ -56,44 +61,33 @@ const validatePass = (rule, value, callback) => {
 // 定义校验规则
 const loginFormRules = reactive({
   username: [
-    {required: true, message: '用户名不能为空', trigger: 'blur'},
-    {min: 3, max: 10, message: "长度在3到10个字符", trigger: "blur"},
+    {required: true, message: '用户名不能为空', trigger: 'blur'}
   ],
   password: [
     {required: true, message: '密码不能为空', trigger: 'blur'},
     {min: 6, max: 15, message: '密码位数只能在6~15之间', trigger: 'blur'},
     {validator: validatePass, trigger: 'blur'}
   ]
-});
+})
 
-// 是否登录成功
-const successMode = ref<boolean>(false)
-
-// 登录按钮
-async function submitForm() {
-  const form = unref(loginFromRef)
+// 表单提交
+const submitForm = async () => {
+  const form = unref(loginFormRef)
   if (!form) {
     return
   }
-  form.validate((valid) => {
-    if (valid) {
-      successMode.value = true
-      // 路由跳转
-      router.push('/axios')
-    } else {
-      console.log('error submit!!');
-      return false;
-    }
-  })
+  try {
+    await form.validate()
+    // 路由跳转
+    router.push('/axios')
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 // 重置表单
 function resetForm() {
-  // 笨办法这么写：
-  // loginForm.value.email = ''
-  // loginForm.value.pass = ''
-  // 明眼人这么写：
-  const form = unref(loginFromRef)
+  const form = unref(loginFormRef)
   form.resetFields()
 }
 
