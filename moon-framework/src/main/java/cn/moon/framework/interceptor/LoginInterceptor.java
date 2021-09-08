@@ -1,6 +1,6 @@
-package cn.moon.interceptor;
+package cn.moon.framework.interceptor;
 
-import cn.moon.system.entity.SysUser;
+import cn.moon.system.domain.SysUser;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 

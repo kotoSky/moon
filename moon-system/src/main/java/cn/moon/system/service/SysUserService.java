@@ -1,6 +1,6 @@
 package cn.moon.system.service;
 
-import cn.moon.system.entity.SysUser;
+import cn.moon.system.domain.SysUser;
 import cn.moon.system.mapper.SysUserMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;

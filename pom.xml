@@ -29,10 +29,10 @@
 
     <!--子模块-->
     <modules>
-        <module>base</module>
-        <module>application</module>
-        <module>system</module>
-        <module>service</module>
+        <module>moon-admin</module>
+        <module>moon-common</module>
+        <module>moon-system</module>
+        <module>moon-framework</module>
     </modules>
 
     <dependencies>

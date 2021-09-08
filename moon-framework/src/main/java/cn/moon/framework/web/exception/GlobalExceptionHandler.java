@@ -1,9 +1,9 @@
-package cn.moon.handler;
+package cn.moon.framework.web.exception;
 
 import cn.moon.common.enums.ResultCode;
 import cn.moon.common.exception.CustomException;
 import cn.moon.common.util.ExceptionUtil;
-import cn.moon.common.vo.Result;
+import cn.moon.common.core.domain.MsgResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,25 +20,25 @@ public class GlobalExceptionHandler {
     /**-- 通用异常处理方法 --**/
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public Result error(Exception e) {
+    public MsgResult error(Exception e) {
         log.error(ExceptionUtil.getMessage(e));
-        return Result.error();	// 通用异常结果
+        return MsgResult.error();	// 通用异常结果
     }
 
     /**-- 指定异常处理方法 --**/
     @ExceptionHandler(NullPointerException.class)
     @ResponseBody
-    public Result error(NullPointerException e) {
+    public MsgResult error(NullPointerException e) {
         log.error(ExceptionUtil.getMessage(e));
-        return Result.error().status(ResultCode.NULL_POINTER);
+        return MsgResult.error().status(ResultCode.NULL_POINTER);
     }
 
     /**-- 自定义定异常处理方法 --**/
     @ExceptionHandler(CustomException.class)
     @ResponseBody
-    public Result error(CustomException e) {
+    public MsgResult error(CustomException e) {
         log.error(ExceptionUtil.getMessage(e));
-        return Result.error().msg(e.getMessage()).code(e.getCode());
+        return MsgResult.error().msg(e.getMessage()).code(e.getCode());
     }
 
 }

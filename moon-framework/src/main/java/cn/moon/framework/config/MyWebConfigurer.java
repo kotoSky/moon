@@ -1,6 +1,6 @@
-package cn.moon.config;
+package cn.moon.framework.config;
 
-import cn.moon.interceptor.LoginInterceptor;
+import cn.moon.framework.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
