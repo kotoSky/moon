@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -22,7 +23,7 @@ public class UserController {
     private TokenService tokenService;
 
     @CrossOrigin
-    @PostMapping(value = "api/login")
+    @PostMapping(value = "/login")
     public MsgResult login(LoginUser loginUser, HttpSession session) {
         // 对 html 标签进行转义，防止 XSS 攻击
         String username = loginUser.getUsername();
@@ -44,8 +45,8 @@ public class UserController {
         }
     }
 
-    @GetMapping(path = "api/getUserInfo")
-    public MsgResult index(HttpServletRequest request) {
+    @GetMapping(path = "/getInfo")
+    public MsgResult getInfo(HttpServletRequest request) {
 
         LoginUser loginUser = tokenService.getLoginUser(request);
 

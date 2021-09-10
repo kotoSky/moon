@@ -21,7 +21,7 @@ export default defineConfig({
         // 设置代理，根据我们项目实际情况配置
         proxy: {
             '/api': {
-                target: 'http://localhost:8080',
+                target: 'http://localhost:8081/moon/',
                 changeOrigin: true,
                 secure: false,
                 rewrite: (path) => path.replace('/api/', '/')

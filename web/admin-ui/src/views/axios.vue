@@ -6,7 +6,7 @@
 
 import axios from '../utils/axios'
 
-axios.get("111")
+axios.get("user/getInfo")
   .then((res) => {
     console.log("请求成功")
   })
