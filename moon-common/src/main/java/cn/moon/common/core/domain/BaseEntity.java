@@ -10,9 +10,7 @@ public class BaseEntity implements Serializable {
     /**
      * 创建者
      */
-    private String createId;
-
-    private String createName;
+    private String createBy;
 
     /**
      * 创建时间
@@ -23,9 +21,7 @@ public class BaseEntity implements Serializable {
     /**
      * 更新者
      */
-    private String updateId;
-
-    private String updateName;
+    private String updateBy;
 
     /**
      * 更新时间
@@ -38,20 +34,14 @@ public class BaseEntity implements Serializable {
      */
     private String remark;
 
-    public String getCreateId() {
-        return createId;
+    private Boolean hasDeleted;
+
+    public String getCreateBy() {
+        return createBy;
     }
 
-    public void setCreateId(String createId) {
-        this.createId = createId;
-    }
-
-    public String getCreateName() {
-        return createName;
-    }
-
-    public void setCreateName(String createName) {
-        this.createName = createName;
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
     }
 
     public Date getCreateTime() {
@@ -62,20 +52,12 @@ public class BaseEntity implements Serializable {
         this.createTime = createTime;
     }
 
-    public String getUpdateId() {
-        return updateId;
+    public String getUpdateBy() {
+        return updateBy;
     }
 
-    public void setUpdateId(String updateId) {
-        this.updateId = updateId;
-    }
-
-    public String getUpdateName() {
-        return updateName;
-    }
-
-    public void setUpdateName(String updateName) {
-        this.updateName = updateName;
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
     }
 
     public Date getUpdateTime() {
@@ -92,5 +74,13 @@ public class BaseEntity implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Boolean getHasDeleted() {
+        return hasDeleted;
+    }
+
+    public void setHasDeleted(Boolean hasDeleted) {
+        this.hasDeleted = hasDeleted;
     }
 }

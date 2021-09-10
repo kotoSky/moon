@@ -8,6 +8,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,16 +19,19 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class TokenService {
 
+    // 令牌自定义标识
+    @Value("${token.header}")
+    private String header;
+
+    // 令牌秘钥
+    @Value("${token.secret}")
+    private String secret;
+
+    // 令牌有效期（默认30分钟）
+    @Value("${token.expireTime}")
+    private int expireTime;
+
     private static final String KEY = "login_tokens:";
-
-    // 标识
-    private static final String HEADER = "Authorization";
-
-    // 密钥
-    private static final String SECRET = "qwerasdzxcvbnmujmyhntgbrfvedcwsxqaz";
-
-    // 令牌有效期（默认120分钟）
-    private int expireTime = 120;
 
     protected static final long MILLIS_SECOND = 1000;
 
@@ -84,7 +88,7 @@ public class TokenService {
         loginUser.setExpireTime(loginUser.getLoginTime() + expireTime * MILLIS_MINUTE);
         // 根据uuid将loginUser缓存
         String userKey = getTokenKey(loginUser.getToken());
-        redisUtils.setCacheObject(userKey, loginUser,expireTime * 60, TimeUnit.MINUTES);
+        redisUtils.setCacheObject(userKey, loginUser, expireTime * 60, TimeUnit.MINUTES);
     }
 
     /**
@@ -110,7 +114,7 @@ public class TokenService {
     private String createToken(Map<String, Object> claims) {
         String token = Jwts.builder()
                 .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, SECRET).compact();
+                .signWith(SignatureAlgorithm.HS512, secret).compact();
         return token;
     }
 
@@ -122,7 +126,7 @@ public class TokenService {
      */
     private Claims parseToken(String token) {
         return Jwts.parser()
-                .setSigningKey(SECRET)
+                .setSigningKey(secret)
                 .parseClaimsJws(token)
                 .getBody();
     }
@@ -134,7 +138,7 @@ public class TokenService {
      * @return token
      */
     public String getToken(HttpServletRequest request) {
-        String token = request.getHeader(HEADER);
+        String token = request.getHeader(header);
         if (StringUtils.isNotEmpty(token) && token.startsWith("Bearer ")) {
             token = token.replace("Bearer ", "");
         }
