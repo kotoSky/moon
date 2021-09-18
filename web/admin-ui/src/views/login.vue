@@ -26,6 +26,7 @@
 
 import {reactive, ref, unref} from 'vue'
 import {useRouter} from 'vue-router'
+import axios from "../utils/axios";
 
 const router = useRouter()
 
@@ -79,7 +80,11 @@ const submitForm = async () => {
   try {
     await form.validate()
     // 路由跳转
-    router.push('/axios')
+    axios.post("user/login", loginForm._rawValue)
+      .then((res) => {
+        localStorage.setItem("token", res.data.data);
+        router.push('/axios')
+      })
   } catch (err) {
     console.log(err)
   }

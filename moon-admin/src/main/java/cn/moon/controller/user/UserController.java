@@ -24,7 +24,7 @@ public class UserController {
 
     @CrossOrigin
     @PostMapping(value = "/login")
-    public MsgResult login(LoginUser loginUser, HttpSession session) {
+    public MsgResult login(@RequestBody LoginUser loginUser, HttpSession session) {
         // 对 html 标签进行转义，防止 XSS 攻击
         String username = loginUser.getUsername();
         username = HtmlUtils.htmlEscape(username);
